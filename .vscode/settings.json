@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.snap": "javascript",
+        "stdio.h": "c"
+    }
+}
