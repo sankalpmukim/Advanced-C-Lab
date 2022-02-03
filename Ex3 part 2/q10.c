@@ -1,4 +1,13 @@
 // WAP to remove the duplicate characters from the given string, S and print the resultant string, RS (Hint: S <-AabCaBcdEGzYz , RS <-AbCdEGzY)
+// Algorithm:
+// 1. Declare a function to get lowercase of the given character.
+// 2. Declare a function to find out if a character exists in the given string.
+// 3. Take string from the user.
+// 4. Iterate over the string and check if the character exists in the string or not.
+// 5. If the character exists, then skip the character.
+// 6. Else place the character in the resultant string.
+// 7. Place a null character at the end of the string.
+// 8. Display the resultant string.
 #include <stdio.h>
 
 char toLower(char c)

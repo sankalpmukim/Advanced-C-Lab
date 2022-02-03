@@ -1,4 +1,11 @@
 // Write a program to find the number of times a given word "the" appears in the given string "Best brain  of the nation may be found in the last benches of the classroom".
+// Algorithm:
+// 1. Define the string.
+// 2. Traverse the string.
+// 3. If a character is a space, then check if the word "the" is present or not.
+// 4. If the word "the" is present, then increment the count.
+// 5. Else skip the character.
+// 6. Display the count.
 #include <stdio.h>
 
 int main()

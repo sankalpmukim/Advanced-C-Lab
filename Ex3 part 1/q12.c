@@ -1,3 +1,14 @@
+// WAP to find the maximum element in a given row and minimum element in a given column for a given matrix.
+// Algorithm:
+// 1. Take the matrix from the user.
+// 2. Take the row number from the user.
+// 3. Take the column number from the user.
+// 4. Declare a variable to store the maximum element.
+// 5. Declare a variable to store the minimum element.
+// 6. Traverse the row.
+// 7. If the element is greater than the maximum element, then set the maximum element to the element.
+// 8. Else if the element is less than the minimum element, then set the minimum element to the element.
+// 9. Display the maximum element and the minimum element.
 #include <stdio.h>
 
 int main()

@@ -1,3 +1,13 @@
+// WAP to find the product of boundary elements of a given matrix.
+// Algorithm:
+// 1. Take the matrix from the user.
+// 2. Declare a variable to store the product.
+// 3. Traverse the matrix.
+// 4. If the element is the first element of the row, then multiply it with the product.
+// 5. Else if the element is the first element of the column, then multiply it with the product.
+// 6. Else if the element is the last element of the row, then multiply it with the product.
+// 7. Else if the element is the last element of the column, then multiply it with the product.
+// 8. Display the product.
 #include <stdio.h>
 
 int main()

@@ -1,8 +1,9 @@
+// WAP to extract odd, even and prime numbers in an array to 3 different arrays and display this array.
 #include <stdio.h>
 
 int main()
 {
-    int arr[100], positives[100], negatives[100], primes[100];
+    int arr[100], odds[100], evens[100], primes[100];
     int n;
     printf("Enter n: ");
     scanf("%d", &n);
@@ -12,51 +13,46 @@ int main()
         scanf("%d", &arr[i]);
     }
     printf("\n");
-    int positive_size = 0, negative_size = 0, primes_size = 0;
+    int odd_count = 0, even_count = 0, prime_count = 0;
     for (int i = 0; i < n; i++)
     {
-        if (arr[i] > 0)
+        if (arr[i] % 2 == 0)
         {
-            positives[positive_size++] = arr[i];
+            evens[even_count++] = arr[i];
         }
         else
         {
-            negatives[negative_size++] = arr[i];
+            odds[odd_count++] = arr[i];
         }
-        int prime = 1;
-        for (int j = 2; j < arr[i] / 2 + 1; j++)
+        int flag = 0;
+        for (int j = 2; j <= arr[i] / 2; j++)
         {
             if (arr[i] % j == 0)
             {
-                prime = 0;
+                flag = 1;
                 break;
             }
         }
-        if (prime && arr[i] > 1)
+        if (flag == 0)
         {
-            primes[primes_size++] = arr[i];
+            primes[prime_count++] = arr[i];
         }
     }
-
-    printf("Positive numbers are: \n");
-    printf("[\n\t");
-    for (int i = 0; i < positive_size; i++)
+    printf("Odds: ");
+    for (int i = 0; i < odd_count; i++)
     {
-        printf("%d, ", positives[i]);
+        printf("%d, ", odds[i]);
     }
-    printf("\n]\n");
-    printf("Negative numbers are: \n");
-    printf("[\n\t");
-    for (int i = 0; i < negative_size; i++)
+    printf("\nEvens: ");
+    for (int i = 0; i < even_count; i++)
     {
-        printf("%d, ", negatives[i]);
+        printf("%d, ", evens[i]);
     }
-    printf("\n]\n");
-    printf("Prime numbers are: \n");
-    printf("[\n\t");
-    for (int i = 0; i < primes_size; i++)
+    printf("\nPrimes: ");
+    for (int i = 0; i < prime_count; i++)
     {
         printf("%d, ", primes[i]);
     }
-    printf("\n]\n");
+    printf("\n");
+    return 0;
 }

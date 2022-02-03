@@ -1,3 +1,11 @@
+// WAP to carry out Left to Right rotations of a 1-D array n times.
+// Algorithm:
+// 1. Take the array from the user.
+// 2. Take the number of rotations from the user.
+// 3. For n rotations,
+// 4. Traverse the array and shift the elements to the right.
+// 5. Set the last element to 0.
+// 6. Display the array.
 #include <stdio.h>
 
 int main()

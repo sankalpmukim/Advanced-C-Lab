@@ -1,4 +1,11 @@
 // WAP to insert a substring anywhere in between the given string except in the first and last position of the string. Finally display the resultant string on inserting the sub-string.
+// Algorithm:
+// 1. Declare a function to find the length of the given string.
+// 2. Take the string from the user.
+// 3. Take the substring from the user.
+// 4. Take the position from the user.
+// 5. Insert the substring into the string by shifting the characters to the right.
+// 6. Display the resultant string.
 #include <stdio.h>
 #include <stdlib.h>
 
