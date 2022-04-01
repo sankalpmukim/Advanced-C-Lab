@@ -24,6 +24,7 @@ int main()
 // input all rainfall month by month
 double **inputRainfall()
 {
+    // rainfall is the array to store pointers to the first day of each month
     double **rainfall = (double **)malloc(12 * sizeof(double *));
     int i;
     for (i = 0; i < 12; i++)

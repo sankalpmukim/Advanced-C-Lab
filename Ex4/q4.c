@@ -1,111 +1,105 @@
-// Write a program and the following functions to compute the average value for the following data values stored in a two dimensional array.
+// Write a program and the following functions to compute values for the following data values stored in a two dimensional array.
 #include <stdio.h>
+#include <stdlib.h>
 
-// input the data into a two dimensional array
-double **inputData(int *rows, int *cols, int m, int n);
-// compute the row averages
-double *rowAverages(double **data, int rows, int cols);
-// compute the column averages
-double *colAverages(double **data, int rows, int cols);
-// compute the overall average
-double overallAverage(double **data, int rows, int cols);
-// output the data
-void outputData(double **data, int rows, int cols);
+// A function to input the data into a two dimensional array.
+double **input2DData(int rows, int columns);
+
+// A function to compute the row averages and store them in a one dimensional array.
+void computeRowAverages(double *rowAverages, int columns, double **data);
+
+// A function to compute the column averages and store them in a one dimensional array.
+void computeColumnAverages(double *columnAverages, int rows, double **data);
+
+// A function to compute the average of all the values in the array.
+double fullAverage(double **data, int rows, int columns);
+
+// A function to output the array, row averages, column averages, and the overall average.
+void outputData(double **data, int rows, int columns);
 
 int main()
 {
-    int rows, cols;
-    double **data = inputData(&rows, &cols, 5, 5);
-    outputData(data, rows, cols);
-    return 0;
+    int rows, columns;
+    printf("Enter the number of rows:");
+    scanf("%d", &rows);
+    printf("Enter the number of columns:");
+    scanf("%d", &columns);
+    double **data = input2DData(rows, columns);
+    outputData(data, rows, columns);
 }
 
-double **inputData(int *rows, int *cols, int m, int n)
+double **input2DData(int rows, int columns)
 {
-    double **data = (double **)malloc(m * sizeof(double *));
-    int i;
-    for (i = 0; i < m; i++)
+    // allocate space
+    double **data = (double **)malloc(rows * sizeof(double *));
+    printf("Total rows to enter data for: %d\n", rows);
+    // input data
+    for (size_t i = 0; i < rows; i++)
     {
-        data[i] = (double *)malloc(n * sizeof(double));
-    }
-    for (i = 0; i < m; i++)
-    {
-        int j;
-        printf("Enter data for row %d: ", i + 1);
-        for (j = 0; j < n; j++)
+        printf("Enter data for row %ld: ", (i + 1));
+        data[i] = (double *)malloc(sizeof(double));
+        for (size_t j = 0; j < columns; j++)
         {
             scanf("%lf", &data[i][j]);
         }
     }
-    *rows = m;
-    *cols = n;
     return data;
 }
 
-double *rowAverages(double **data, int rows, int cols)
+void computeRowAverages(double *rowAverages, int columns, double **data)
 {
-    double *averages = (double *)malloc(rows * sizeof(double));
-    int i;
-    for (i = 0; i < rows; i++)
+    for (size_t i = 0; i < columns; i++)
     {
-        int j;
         double sum = 0;
-        for (j = 0; j < cols; j++)
+        for (size_t j = 0; j < columns; j++)
         {
             sum += data[i][j];
         }
-        averages[i] = sum / cols;
+        rowAverages[i] = sum / columns;
     }
-    return averages;
 }
 
-double *colAverages(double **data, int rows, int cols)
+void computeColumnAverages(double *columnAverages, int rows, double **data)
 {
-    double *averages = (double *)malloc(cols * sizeof(double));
-    int i;
-    for (i = 0; i < cols; i++)
+    for (size_t i = 0; i < rows; i++)
     {
-        int j;
         double sum = 0;
-        for (j = 0; j < rows; j++)
+        for (size_t j = 0; j < rows; j++)
         {
             sum += data[j][i];
         }
-        averages[i] = sum / rows;
+        columnAverages[i] = sum / rows;
     }
-    return averages;
 }
 
-double overallAverage(double **data, int rows, int cols)
+double fullAverage(double **data, int rows, int columns)
 {
     double sum = 0;
-    int i, j;
-    for (i = 0; i < rows; i++)
+    for (size_t i = 0; i < rows; i++)
     {
-        for (j = 0; j < cols; j++)
+        for (size_t j = 0; j < columns; j++)
         {
             sum += data[i][j];
         }
     }
-    return sum / (rows * cols);
+    return sum / (rows * columns);
 }
 
-void outputData(double **data, int rows, int cols)
+void outputData(double **data, int rows, int columns)
 {
-    double *rowAverages = rowAverages(data, rows, cols);
-    double *colAverages = colAverages(data, rows, cols);
-    double overallAverage = overallAverage(data, rows, cols);
-    int i;
-    printf("\n");
-    for (i = 0; i < rows; i++)
+    double *rowAverages = (double *)malloc(sizeof(double) * columns);
+    double *columnAverages = (double *)malloc(sizeof(double) * rows);
+    computeRowAverages(rowAverages, columns, data);
+    computeColumnAverages(columnAverages, rows, data);
+    printf("\nRow averages:\n");
+    for (size_t i = 0; i < columns; i++)
     {
-        printf("Row %d average: %.2f\n", i + 1, rowAverages[i]);
+        printf("%f\n", rowAverages[i]);
     }
-    printf("\n");
-    for (i = 0; i < cols; i++)
+    printf("\nColumn averages:\n");
+    for (size_t i = 0; i < rows; i++)
     {
-        printf("Column %d average: %.2f\n", i + 1, colAverages[i]);
+        printf("%f\n", columnAverages[i]);
     }
-    printf("\n");
-    printf("Overall average: %.2f\n", overallAverage);
+    printf("\nOverall average: %f\n", fullAverage(data, rows, columns));
 }
