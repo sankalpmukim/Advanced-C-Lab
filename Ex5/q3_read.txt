@@ -1,0 +1,10 @@
+Reading the Text from the File
+
+Text is succesfully Encrypted
+
+Decrypting the Content of the File and Displaying,
+
+I AM LEARNING ADVANCE C THIS SEMESTER.
+I WILL BE LEARNING PYTHON NEXT SEMESTER.
+I WILL GET INTERNSHIP IN NEXT MONTH.
+I WILL TRY TO DO MY BEST.
